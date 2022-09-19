@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TalkBer</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vue文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- 引入自定义js -->
+    <script src="./js/login.js"></script>
+    <script src="commons/js/common.js"></script>
+    <!-- 引入自定义css -->
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="commons/css/common.css">
+</head>
+<body>
+    <div id="app">
+        <el-container>
+
+            <header th:replace="common/header::header"></header>
+
+            <el-container>
+                <el-aside>
+                    <el-carousel height="80vh" indicator-position="outside">
+                        <el-carousel-item v-for="item in carousals" :key="item" >
+                            <img :src="item" alt="轮播图" id="carousel">
+                        </el-carousel-item>
+                    </el-carousel>
+                </el-aside>
+                <el-main>
+                    <el-image src="./image/logo.png"></el-image>
+                    <hr>
+                    <el-form :model="form" ref="form" :rules="rules" status-icon id="loginForm">
+                      <el-form-item label="手机/邮箱" prop="phoneOrEmail">
+                          <el-input type="text" v-model="form.phoneOrEmail" autofocus autocomplete="off" placeholder="请输入手机或邮箱" maxlength="30" prefix-icon="el-icon-user" ></el-input>
+                      </el-form-item>
+                      <el-form-item label="密码">
+                          <el-input type="password" v-model="form.password" placeholder="请输入密码" autocomplete="off" maxlength="16" show-password prefix-icon="el-icon-lock"></el-input>
+                      </el-form-item>
+                      <el-form-item prop="code">
+                          <el-input type="text" v-model="form.code" maxlength="4" style="width: 15vw;" placeholder="请输入验证码"></el-input>
+                          <el-image v-bind:src="codeImg"  alt="验证码" style="vertical-align: -15px;width: 6vw;margin-left: 1.8vw;cursor: pointer" @click="switchVerifyCode"></el-image>
+                    </el-form-item>
+                      <el-form-item prop="rememberMe">
+                          <el-checkbox label="记住我" border size="medium" v-model="form.rememberMe" style="position: relative;right: 9.4vw;"></el-checkbox>
+                          <el-link type="info" href="retrieve-pwd.html" style="position: relative;left: 9.4vw;">找回密码</el-link>
+                      </el-form-item>
+                      <el-form-item>
+                        <el-button type="primary" @click="submitForm('form')" size="400px">提交</el-button>
+                        <el-button @click="resetForm('form')">重置</el-button>
+                      </el-form-item>
+                      <el-form-item>
+                        <span style="vertical-align: -2px;">还莫得账号？</span><el-link type="primary"  icon="el-icon-paperclip" href="registry.html">立即注册</el-link>
+                      </el-form-item>
+                    </el-form>
+                </el-main>
+            </el-container>
+
+            <footer th:replace="common/footer::footer"></footer>
+
+        </el-container>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalkBer找回密码</title>
+    <!-- Vue文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- 引入自定义js -->
+    <script src="./js/retrieve-pwd.js"></script>
+    <script src="commons/js/common.js"></script>
+    <!-- 引入自定义css -->
+    <link rel="stylesheet" href="./css/retrieve-pwd.css">
+    <link rel="stylesheet" href="commons/css/common.css">
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <header th:replace="common/header::header"></header>
+            <!-- 修改密码主体 -->
+            <el-main>
+                <i class="el-icon-d-arrow-left back" onclick="history.go(-1)"></i>
+                <el-steps :active="active" finish-status="success" align-center process-status="finish">
+                    <el-step title="步骤 1" description="第一步，输入注册时的邮箱，系统将监测此用户是否存在"></el-step>
+                    <el-step title="步骤 2" description="第二步，若存在则向目标邮箱发送邮件，您需要输入邮箱发来的验证码"></el-step>
+                    <el-step title="步骤 3" description="第三步，确认后即可修改新的密码，请认真保管"></el-step>
+                  </el-steps>
+                  
+                  <!-- 输入邮箱 -->
+                  <el-row style="padding: 100px;" v-if="active==0">
+                      <el-form :model="form" ref="form" :rules="rules" status-icon>
+                        <el-form-item label="邮箱" prop="email" required>
+                            <el-input type="email" placeholder="请输入注册时的邮箱" v-model="form.email"
+                            autocomplete autofocus  maxlength="30" @blur="blur('form')"></el-input>
+                        </el-form-item>
+                      </el-form>
+                  </el-row>
+                  <!-- 输入邮箱发送的验证码 -->
+                  <el-row v-if="active==1" style="padding: 100px;">
+                    <p>验证码</p>
+                    <el-input type="text" placeholder="请输入邮箱发送的验证码" v-model="code"></el-input>
+                  </el-row>
+                  <!-- 修改密码 -->
+                  <el-row v-if="active==2" style="padding: 100px;">
+                    <el-form :model="form" ref="form" :rules="rules" status-icon>
+                        <el-form-item label="密码" prop="password" required >
+                            <el-input type="password" placeholder="请输入新密码" v-model="form.password"
+                            autocomplete autofocus  maxlength="16" @blur="blur('form')"></el-input>
+                        </el-form-item>
+                        <el-form-item label="确认密码" prop="q_password" required>
+                            <el-input type="password" placeholder="请确认密码" v-model="form.q_password"
+                            autocomplete autofocus  maxlength="16" @blur="blur('form')"></el-input>
+                        </el-form-item>
+                      </el-form>
+                  </el-row>
+                    <!-- 修改成功后的提示 -->
+                    <el-row v-if="active==3" style="padding: 100px;margin-left: 37.5%">
+                        <el-col :sm="12" :lg="6">
+                            <el-result icon="success" title="修改密码成功" subTitle="请根据提示进行操作">
+                                <template slot="extra">
+                                    <el-button type="primary" size="medium" onclick="window.location.href='/login'">返回登录页面</el-button>
+                                </template>
+                            </el-result>
+                        </el-col>
+                    </el-row>
+                  <el-button v-if="active==0 || active==1 ||active==2" style="margin-top: 12px;" @click="next" :disabled="disabled">下一步</el-button>
+            </el-main>
+            <!-- 修改密码主体 -->
+            <footer th:replace="common/footer::footer"></footer>
+        </el-container>
+    </div>
+</body>
+</html>

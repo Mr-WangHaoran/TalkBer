@@ -1,0 +1,13 @@
+.el-main{
+    text-align: center;width: 40vw;position: relative;left: 30vw;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-shadow: 0 5px 20px #ccc;
+}
+.back{
+    font-size: 2.5rem;
+    position: relative;
+    right: 17vw;
+    cursor: pointer;
+    top: 1vh;
+}

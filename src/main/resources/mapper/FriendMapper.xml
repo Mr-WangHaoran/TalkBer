@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.talkber.dao.FriendDao">
+
+    <select id="findAllFriendUUID" parameterType="string" resultType="string">
+        select friend_uuid from friend where `uuid`=#{uuid}
+    </select>
+
+
+    <select id="findFriendsByUUIDs" resultType="com.talkber.pojo.dto.FriendDto">
+        select `uuid`,nickname,email,address,user_avatar,`desc`,status,last_login_time from user
+        <if test="uuids != null and uuids.size>0">
+            where uuid in
+            <foreach collection="list" open="(" close=")" separator="," item="uid">
+                #{uid}
+            </foreach>
+        </if>
+        <if test="uuids.size==0 or uuids==null">
+            where uuid = 1
+        </if>
+
+    </select>
+</mapper>

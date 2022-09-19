@@ -1,0 +1,10 @@
+.back{
+    font-size: 2.5rem;
+    position: relative;
+    right: 45vw;
+    cursor: pointer;
+}
+.el-main{
+    padding-top: 100px;
+    padding-bottom: 120px;
+}

@@ -1,0 +1,63 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(white, #f5f7fb);
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+@media screen and (max-width:1257px){
+    #logo{
+        display: none;
+    }
+}
+.el-main {
+    color: #333;
+    text-align: center;
+}
+
+.el-header{
+    text-align: center;
+    border-bottom: 1px solid #e6e6e6;
+    box-shadow: 0 3px 8px 5px #eeeeee;
+    position: relative;
+}
+.el-footer{
+    background-color:#141621;
+    padding:50px 300px 0px 400px;
+    color: #fff;
+}
+
+.el-footer>#first .el-col{
+    border-bottom: 1px solid rgba(204, 204, 204, 0.486);
+    padding: 13px;
+}
+#logo{
+    background-image: url("../../image/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    z-index: 3;
+    cursor: pointer;
+}
+@media screen and (min-width:1257px){
+    .el-menu{
+        margin-left: 40%;
+    }
+    #logo{
+        position: absolute;
+        left: 16.5vw;
+        width: 25vw;
+        top: -3vh;
+        height: 11.5vh;
+    }
+}
+
+.el-input__inner{
+    background-color:aliceblue;
+}
+

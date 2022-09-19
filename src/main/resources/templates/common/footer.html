@@ -1,0 +1,29 @@
+<html lang="zh,en" xmlns:th="http://www.thymeleaf.org">
+<el-footer height="30vh" th:fragment="footer">
+    <el-row :gutter="20" id="first">
+        <el-col :span="6">交流合作</el-col>
+        <el-col :span="6">帮助支持</el-col>
+        <el-col :span="6">关于Talkber</el-col>
+        <el-col :span="6">举报中心</el-col>
+    </el-row>
+    <el-row>
+        <el-col :span="6">
+            <p style="font-size: 2rem;">15516923213</p>
+            <p>
+                <el-button>在线咨询</el-button>
+            </p>
+        </el-col>
+        <el-col :span="6" style="margin-top: 35px;">
+            暂无支持
+        </el-col>
+        <el-col :span="6" style="margin-top: 35px;">
+            <el-link icon="el-icon-view" >点击了解</el-link>
+        </el-col>
+        <el-col :span="6">
+            <el-input type="text" placeholder="要举报用户的手机号码" style="margin-top: 30px;"></el-input>
+            <el-button style="margin-top: 20px;">我要举报</el-button>
+        </el-col>
+    </el-row>
+    <el-row></el-row>
+    <el-row style="text-align: center;"><a href="#" style="color: #fff;">Copyright © 2013-2022 www.whr.com. All Rights Reserved 开发者版权所有 沪ICP备14044897号-9</a></el-row>
+</el-footer>
