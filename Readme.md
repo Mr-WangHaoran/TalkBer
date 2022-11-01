@@ -1,8 +1,14 @@
-交流原理图：
+系统聊天基本原理图：
 ![image](https://user-images.githubusercontent.com/68339044/199145303-44057ab8-2f0d-409d-a902-bc6ff5b15d15.png)
 
 目前此系统为单体应用系统，分布式系统我正在学习尝试中，但是一些问题解决起来很棘手，例如：硬件问题，安全问题
 分布式系统要求的资源过多，并且服务与服务之间的交互也需要第三中间件的支持，所以这不是一蹴而就的。
+以下两图是我对分布式系统的基本构想
+![image](https://user-images.githubusercontent.com/68339044/199146501-bf4f5fc4-c50f-4565-96ce-279b49b31acc.png)
+![image](https://user-images.githubusercontent.com/68339044/199150042-8878f9b8-015c-44d4-90e5-fa770d9ac592.png)
+然后是我对群聊功能的设想【ps：网上的资料太难找了，好像对IM系统都嗤之以鼻，我怀疑是QQ和微信两家独大，于是很多人也就懒得去开发IM项目，555，所以好多功能只能靠自己设想/(ㄒoㄒ)/~~】
+![image](https://user-images.githubusercontent.com/68339044/199152978-a80bb062-81ca-43d8-b082-01a40a95b211.png)
+
 
 系统开发技术和环境：Idea，vscode，Mysql
 架构分析：前后端联调不分离，交互方式为JSON
